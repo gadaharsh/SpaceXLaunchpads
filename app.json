@@ -27,6 +27,7 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "A react-native app using SpaceX APIs to display available launchpads and their top three launches."
   }
 }

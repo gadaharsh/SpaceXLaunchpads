@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     // marginTop: 10,
     paddingTop: "5%",
 
-    backgroundColor: "#fff",
+    backgroundColor: "#16213E",
   },
   launchName :{
     textAlign: 'center',
@@ -88,6 +88,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 18,
     paddingBottom: 10,
+    color: "white",
   },
 
 });

@@ -163,13 +163,14 @@ const styles = StyleSheet.create({
     marginTop: 48,
     paddingTop: "5%",
 
-    backgroundColor: "#fff",
+    backgroundColor: "#16213E",
     alignItems: "center",
     justifyContent: "center",
   },
   title: {
     fontSize: 18,
     paddingBottom: 10,
+    color: "white",
   },
   card: {
     backgroundColor: "black",

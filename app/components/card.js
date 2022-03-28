@@ -20,9 +20,11 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
     marginHorizontal: 4,
     marginVertical: 6,
+    
   },
   cardContent: {
     marginHorizontal: 18,
     marginVertical: 20,
+    // padding :10,
   },
 });

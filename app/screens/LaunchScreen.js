@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Card from "../components/card";
 
 const baseURL = "https://api.spacexdata.com/v4/launches/";
+const B = (props) => <Text style={{fontWeight: 'bold'}}>{props.children}</Text>
 
 const LaunchScreen = ({ route, navigation }) => {
   const [isLoading, setLoading] = useState(true);
@@ -28,14 +29,14 @@ const LaunchScreen = ({ route, navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text>Launch Details</Text>
+      <Text style={styles.title}><B>Launch Details</B></Text>
 
       {isLoading && <ActivityIndicator />}
 
       {launch && (
         <Card>
-          <Text>{launch.name}</Text>
-          <Text>Details:</Text>
+          <Text style = {styles.launchName}><B>{launch.name}</B></Text>
+          <Text><B>Details:</B></Text>
           {(() => {
             let details = launch.details;
             if (details) {
@@ -46,7 +47,7 @@ const LaunchScreen = ({ route, navigation }) => {
             return null;
           })()}
 
-          <Text>Date: {launch.date_local}</Text>
+          <Text><B>Date:</B> {launch.date_local}</Text>
 
           {(() => {
             // let boolVar = launch.cores[0].reused;
@@ -55,12 +56,12 @@ const LaunchScreen = ({ route, navigation }) => {
               const result = details.includes("reused");
 
               if (result) {
-                return <Text>Reused : Yes</Text>;
+                return <Text><B>Reused: </B>Yes</Text>;
               } else {
-                return <Text>Reused: No</Text>;
+                return <Text><B>Reused: </B>No</Text>;
               }
             } else {
-              return <Text>Reused: No</Text>;
+              return <Text><B>Reused: </B>No</Text>;
             }
 
             return null;
@@ -75,10 +76,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    marginTop: 48,
+    // marginTop: 10,
     paddingTop: "5%",
 
     backgroundColor: "#fff",
+  },
+  launchName :{
+    textAlign: 'center',
+    fontSize: 16,
+  },
+  title: {
+    fontSize: 18,
+    paddingBottom: 10,
   },
 
 });

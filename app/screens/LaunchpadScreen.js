@@ -16,6 +16,9 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Card from "../components/card";
 
 const launchpadURL = "https://api.spacexdata.com/v4/launchpads";
+const B = (props) => (
+  <Text style={{ fontWeight: "bold" }}>{props.children}</Text>
+);
 
 const LaunchpadScreen = ({ navigation }) => {
   //  Managing States
@@ -39,10 +42,8 @@ const LaunchpadScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       {isLoading && <ActivityIndicator />}
-      <Text
-      // onPress={() => navigation.navigate("Launch")}
-      >
-        Welcome to SpaceX API Launchpad
+      <Text style={styles.title}>
+        <B>Welcome to SpaceX API Launchpad</B>
       </Text>
       {/* <Text>LaunchpadScreen</Text> */}
 
@@ -55,23 +56,32 @@ const LaunchpadScreen = ({ navigation }) => {
             renderItem={({ item }) => (
               <Card>
                 <View>
-                  <Text px={5} py={2} rounded="md" bg="primary.300" my={2}>
-                    {item.name}
+                  <Text
+                    px={5}
+                    py={2}
+                    rounded="md"
+                    bg="primary.300"
+                    my={2}
+                    style={styles.launchpadName}
+                  >
+                    <B>{item.name}</B>
                   </Text>
                   <Image
                     source={{ uri: item.images.large[0] }}
-                    style={{ width: 200, height: 200 }}
+                    style={styles.launchImg}
                   />
                 </View>
                 <Text px={5} py={2} rounded="md" bg="primary.300" my={2}>
-                  {item.details}
+                  <B>Details:</B> {item.details}
                 </Text>
                 <Text px={5} py={2} rounded="md" bg="primary.300" my={2}>
-                  Status:{" "}
+                  <B>Status: </B>
                   {item.status.charAt(0).toUpperCase() + item.status.slice(1)}
                 </Text>
                 <View>
-                  <Text>Launches:</Text>
+                  <Text>
+                    <B>Launches:</B>
+                  </Text>
                   {/* Immediately Invoked Function Expression (IIFE) */}
                   {(() => {
                     length = item.launches.length;
@@ -156,6 +166,24 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+  },
+  title: {
+    fontSize: 18,
+    paddingBottom: 10,
+  },
+  card: {
+    backgroundColor: "black",
+    color: "white",
+  },
+  launchpadName: {
+    textAlign: "center",
+    fontSize: 16,
+  },
+  launchImg: {
+    alignSelf: "center",
+    width: 200,
+    height: 200,
+    resizeMode: 'contain',
   },
 });
 

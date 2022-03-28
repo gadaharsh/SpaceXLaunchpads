@@ -39,8 +39,11 @@ const LaunchpadScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       {isLoading && <ActivityIndicator />}
-      <Text onPress={() => navigation.navigate('Launch')}
-      >Welcome to SpaceX API Launchpad</Text>
+      <Text
+      // onPress={() => navigation.navigate("Launch")}
+      >
+        Welcome to SpaceX API Launchpad
+      </Text>
       {/* <Text>LaunchpadScreen</Text> */}
 
       {launchpads && (
@@ -51,7 +54,7 @@ const LaunchpadScreen = ({ navigation }) => {
             data={launchpads}
             renderItem={({ item }) => (
               <Card>
-                <View >
+                <View>
                   <Text px={5} py={2} rounded="md" bg="primary.300" my={2}>
                     {item.name}
                   </Text>
@@ -61,11 +64,11 @@ const LaunchpadScreen = ({ navigation }) => {
                   />
                 </View>
                 <Text px={5} py={2} rounded="md" bg="primary.300" my={2}>
-                  
                   {item.details}
                 </Text>
                 <Text px={5} py={2} rounded="md" bg="primary.300" my={2}>
-                  Status: {item.status.charAt(0).toUpperCase() + item.status.slice(1)}
+                  Status:{" "}
+                  {item.status.charAt(0).toUpperCase() + item.status.slice(1)}
                 </Text>
                 <View>
                   <Text>Launches:</Text>
@@ -98,9 +101,33 @@ const LaunchpadScreen = ({ navigation }) => {
                     } else {
                       return (
                         <>
-                          <Text >1. {item.launches[0]}</Text>
-                          <Text>2. {item.launches[1]}</Text>
-                          <Text>3. {item.launches[2]}</Text>
+                          <Text
+                            onPress={() => {
+                              navigation.navigate("Launch", {
+                                id: item.launches[0],
+                              });
+                            }}
+                          >
+                            1. {item.launches[0]}
+                          </Text>
+                          <Text
+                            onPress={() => {
+                              navigation.navigate("Launch", {
+                                id: item.launches[0],
+                              });
+                            }}
+                          >
+                            2. {item.launches[1]}
+                          </Text>
+                          <Text
+                            onPress={() => {
+                              navigation.navigate("Launch", {
+                                id: item.launches[2],
+                              });
+                            }}
+                          >
+                            3. {item.launches[2]}
+                          </Text>
                         </>
                       );
                     }

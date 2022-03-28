@@ -14,7 +14,7 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Launchpad">
           <Stack.Screen options={{headerShown: false}} name="Launchpad" component={LaunchpadScreen} />
-          <Stack.Screen options={{headerShown: false}} name="Launch" component={LaunchScreen} />
+          <Stack.Screen  name="Launch" component={LaunchScreen} />
         </Stack.Navigator>
       </NavigationContainer>
        /* <LaunchpadScreen/>
